@@ -36,7 +36,7 @@ ynh_add_nginx_config
 
 # Create a dedicated PHP-FPM config
 
-ynh_add_fpm_config --phpversion=$phpversion --usage=$fpm_usage --footprint=$fpm_footprint
+ynh_add_fpm_config --phpversion=$phpversion
 # Used by ynh_add_nginx_config
 phpversion="7.4"
 
