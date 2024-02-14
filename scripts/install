@@ -10,6 +10,12 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Installing dependencies..." --weight=1
+ynh_install_app_dependencies $pkg_dependencies
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=7
@@ -29,8 +35,10 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=2
 ynh_add_nginx_config
 
 # Create a dedicated PHP-FPM config
-ynh_install_app_dependencies "$extra_php_dependencies"
-ynh_add_fpm_config
+
+ynh_add_fpm_config --phpversion=$phpversion --usage=$fpm_usage --footprint=$fpm_footprint
+# Used by ynh_add_nginx_config
+phpversion="php7.4"
 
 #=================================================
 # MODIFY A CONFIG FILE
