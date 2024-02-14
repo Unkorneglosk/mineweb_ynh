@@ -38,7 +38,7 @@ ynh_add_nginx_config
 
 ynh_add_fpm_config --phpversion=$phpversion --usage=$fpm_usage --footprint=$fpm_footprint
 # Used by ynh_add_nginx_config
-phpversion="php7.4"
+phpversion="7.4"
 
 #=================================================
 # MODIFY A CONFIG FILE
